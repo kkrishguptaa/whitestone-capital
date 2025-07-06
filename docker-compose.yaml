@@ -1,0 +1,55 @@
+services:
+  api:
+    container_name: whitestone-capital_api
+    build: ./apps/api
+    restart: always
+    environment:
+      - API_PORT=${API_PORT:-8080}
+      - SLACK_API_KEY=${SLACK_API_KEY:-slack_api_key}
+      - DATABASE_HOST=postgres
+      - DATABASE_PORT=5432
+      - DATABASE_USER=postgres
+      - DATABASE_PASSWORD=postgres
+      - DATABASE_NAME=whitestone_capital
+    ports:
+      - "8080:8080"
+    networks:
+      - whitestone-capital
+    depends_on:
+      postgres:
+        condition: service_healthy
+    develop:
+      watch:
+        - path: ./apps/api
+          action: rebuild
+
+  postgres:
+    container_name: whitestone-capital_postgres
+    image: postgres:latest
+    restart: always
+
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: whitestone_capital
+
+    volumes:
+      - postgres:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+    networks:
+      - whitestone-capital
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+volumes:
+  postgres:
+    name: whitestone-capital_postgres
+
+networks:
+  whitestone-capital:
+    name: whitestone-capital
+    driver: bridge
