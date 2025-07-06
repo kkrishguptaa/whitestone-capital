@@ -32,7 +32,7 @@ jobs:
 
       - name: Build ${{ matrix.app }} Docker Image
         run: |
-          docker build -t ${{ env.PROJECT_NAME }}_${{ matrix.app.name }} ./apps/${{ matrix.app }}
+          docker build -t ${{ env.PROJECT_NAME }}_${{ matrix.app }} ./apps/${{ matrix.app }}
 
   deploy:
     name: Publish Docker Images
