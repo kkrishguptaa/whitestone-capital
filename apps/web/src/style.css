@@ -1,0 +1,7 @@
+@import url("https://fonts.googleapis.com/css2?family=Cinzel:wght@400..900&display=swap");
+@import "tailwindcss";
+
+body {
+  @apply bg-zinc-100 text-zinc-900 font-sans;
+  font-family: "Cinzel";
+}
