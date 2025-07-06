@@ -28,7 +28,24 @@ jobs:
       - name: Checkout
         uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4
 
+      - name: Check for changes in /apps/${{ matrix.app }}
+        id: path_check
+        run: |
+          if [[ "${{ github.event_name }}" == "push" && startsWith(github.ref, 'refs/tags/') ]]; then
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+
+          git fetch origin ${{ github.event.before }}
+          CHANGED=$(git diff --name-only ${{ github.event.before }} ${{ github.sha }} | grep "^apps/${{ matrix.app }}/" || true)
+          if [[ -n "$CHANGED" ]]; then
+            echo "changed=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+          fi
+
       - name: Login ghcr.io
+        if: steps.path_check.outputs.changed == 'true'
         uses: docker/login-action@74a5d142397b4f367a81961eba4e8cd7edddf772 # v3
         with:
           registry: ghcr.io
@@ -36,6 +53,7 @@ jobs:
           password: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Setup Docker Metadata for ${{ matrix.app }}
+        if: steps.path_check.outputs.changed == 'true'
         uses: docker/metadata-action@902fa8ec7d6ecbf8d84d538b9b233a880e428804 # v5
         id: meta
         with:
@@ -47,6 +65,7 @@ jobs:
             type=ref,event=tag,enable=${{ github.event_name == 'push' && startsWith(github.ref, 'refs/tags/') }}
 
       - name: Build and Push ${{ matrix.app }} Docker Image
+        if: steps.path_check.outputs.changed == 'true'
         uses: docker/build-push-action@263435318d21b8e681c14492fe198d362a7d2c83 # v6
         with:
           context: ./apps/${{ matrix.app }}
