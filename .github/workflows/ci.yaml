@@ -42,8 +42,7 @@ jobs:
     strategy:
       matrix:
         app:
-          - path: apps/api
-            name: api
+          - api
 
     steps:
       - name: Checkout
