@@ -12,6 +12,6 @@
     "tailwindcss": "^4.1.11"
   },
   "devDependencies": {
-    "parcel": "^2.14.0"
+    "parcel": "2.15.4"
   }
 }
