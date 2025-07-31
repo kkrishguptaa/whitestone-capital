@@ -8,6 +8,8 @@
         "tailwindcss": "^4.1.11",
       },
       "devDependencies": {
+        "@parcel/packager-raw-url": "2.15.4",
+        "@parcel/transformer-webmanifest": "2.15.4",
         "parcel": "2.15.4",
       },
     },
@@ -109,6 +111,8 @@
 
     "@parcel/packager-raw": ["@parcel/packager-raw@2.15.4", "", { "dependencies": { "@parcel/plugin": "2.15.4" } }, "sha512-CaSpDt5jjcO0SYCtsDhw6yfTDQuDFQ875H42W/ftvSQL7RfLRljPthnbdcy9chvKBbvRBQF+0z8Sxwehrd5hsA=="],
 
+    "@parcel/packager-raw-url": ["@parcel/packager-raw-url@2.15.4", "", { "dependencies": { "@parcel/plugin": "2.15.4", "@parcel/utils": "2.15.4" } }, "sha512-FOYqSUR5pttNQD9Urclc8RW9APLFqOd9gKnpSYCq+3hpIf0HxgcKyLDHvDitSr+qp4kP8IfnEXPPCLS1ImxP9A=="],
+
     "@parcel/packager-svg": ["@parcel/packager-svg@2.15.4", "", { "dependencies": { "@parcel/plugin": "2.15.4", "@parcel/rust": "2.15.4", "@parcel/types": "2.15.4", "@parcel/utils": "2.15.4" } }, "sha512-qHsyOgnzoA2XGMLIYUnX79XAaV327VTWQvIzju/OmOjcff4o3uiEcNL8w9k3p2w2oPXOLoQ0THMiivoUQSM8GQ=="],
 
     "@parcel/packager-wasm": ["@parcel/packager-wasm@2.15.4", "", { "dependencies": { "@parcel/plugin": "2.15.4" } }, "sha512-YPVij7zrBchtXr/y29P4uh3C/+19PMhhLibYF/8oMJKkFkeU3Uv00/XLm915vdBPrIPjgw0YuIfLzUKip1uGtg=="],
@@ -176,6 +180,8 @@
     "@parcel/transformer-react-refresh-wrap": ["@parcel/transformer-react-refresh-wrap@2.15.4", "", { "dependencies": { "@parcel/error-overlay": "2.15.4", "@parcel/plugin": "2.15.4", "@parcel/utils": "2.15.4", "react-refresh": "^0.16.0" } }, "sha512-MgoQrV8+BVjrczAns5ZZbTERGB3/U4MaCBmbg3CuiTiIyS8IJQnGi+OhYRdKAB4NlsgpMZ5T2JrRbQUIm9MM8Q=="],
 
     "@parcel/transformer-svg": ["@parcel/transformer-svg@2.15.4", "", { "dependencies": { "@parcel/diagnostic": "2.15.4", "@parcel/plugin": "2.15.4", "@parcel/rust": "2.15.4" } }, "sha512-Q22e0VRbx62VXFlvJWIlc8ihlLaPQgtnAZz5E1/+ojiNb+k0PmIRjNJclVWPF6IdCsLO5tnGfUOaXe2OnZz28Q=="],
+
+    "@parcel/transformer-webmanifest": ["@parcel/transformer-webmanifest@2.15.4", "", { "dependencies": { "@mischnic/json-sourcemap": "^0.1.1", "@parcel/diagnostic": "2.15.4", "@parcel/plugin": "2.15.4", "@parcel/utils": "2.15.4" } }, "sha512-X0QHB4+D8M2ru63K7pmdmuQelD5PThAzDaa24xsVYmVoHmkdjDohPbkFCKvmz3ymn7Mhq9Ut647XxbxalEyeuQ=="],
 
     "@parcel/types": ["@parcel/types@2.15.4", "", { "dependencies": { "@parcel/types-internal": "2.15.4", "@parcel/workers": "2.15.4" } }, "sha512-fS3UMMinLtzn/NTSx/qx38saBgRniylldh0XZEUcGeME4D2Llu/QlLv+YZ/LJqrFci3fPRM+YAn2K+JT/u+/0w=="],
 
