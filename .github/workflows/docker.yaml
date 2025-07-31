@@ -3,7 +3,8 @@ name: Docker
 on:
   push:
     paths:
-      - "apps/**"
+      - "apps/api/**"
+      - "apps/slack/**"
       - ".github/workflows/docker.yaml"
     branches:
       - main
