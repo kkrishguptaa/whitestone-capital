@@ -5,7 +5,7 @@
   "source": "src/index.html",
   "scripts": {
     "start": "parcel src/**.html",
-    "build": "parcel build --public-url ./"
+    "build": "parcel build src/**.html --public-url ./"
   },
   "dependencies": {
     "@tailwindcss/postcss": "^4.1.11",
